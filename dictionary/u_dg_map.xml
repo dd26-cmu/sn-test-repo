@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Generator Map" max_length="40" name="u_dg_map" type="collection">
+        <element display="true" label="Name" mandatory="true" max_length="40" name="u_name" type="string"/>
+        <element hint="Should insert business rules runs" label="Run business rules" max_length="40" name="u_run_business_rules" type="boolean"/>
+        <element default="true" hint="If false, you should set all system fields (sys_created, sys_created_by, sys_updated, sys_updated_by) if you care about values in those fields" label="Auto sys fields" max_length="40" name="u_sys_fields" type="boolean"/>
+        <element attributes="base_start=true" hint="Where the records will be generated" label="Table" mandatory="true" max_length="40" name="u_table" type="table_name"/>
+    </element>
+</database>

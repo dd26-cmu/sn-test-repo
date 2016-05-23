@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <disabled>ignore</disabled>
+        <field>u_script</field>
+        <mandatory>true</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>john.roberts</sys_created_by>
+        <sys_created_on>2014-03-09 21:03:20</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>b6127da6ef131100719bb4d2b7c0fb6f</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>u_script</sys_name>
+        <sys_package display_value="Data Generator" source="ed470381ef031100719bb4d2b7c0fb34">ed470381ef031100719bb4d2b7c0fb34</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Data Generator">ed470381ef031100719bb4d2b7c0fb34</sys_scope>
+        <sys_update_name>sys_ui_policy_action_b6127da6ef131100719bb4d2b7c0fb6f</sys_update_name>
+        <sys_updated_by>john.roberts</sys_updated_by>
+        <sys_updated_on>2014-04-03 17:46:24</sys_updated_on>
+        <table>u_dg_field_map</table>
+        <ui_policy display_value="Script generated">14027da6ef131100719bb4d2b7c0fb23</ui_policy>
+        <visible>true</visible>
+    </sys_ui_policy_action>
+</record_update>

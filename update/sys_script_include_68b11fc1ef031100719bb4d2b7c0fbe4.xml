@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access/>
+        <active>true</active>
+        <api_name>global.DataGeneratorWorker</api_name>
+        <client_callable>false</client_callable>
+        <description>Component of Data Generator application</description>
+        <name>DataGeneratorWorker</name>
+        <script><![CDATA[var DataGeneratorWorker = Class.create();
+DataGeneratorWorker.prototype = {
+	
+	REQUEST : "u_dg_request",
+	MAP : "u_dg_field_map",
+	ACTIVITY : "u_dg_activity",
+	BUNDLE_REQUEST : "u_dg_m2m_bundle_request",
+	
+	initialize : function() {
+		// Leverage Chance API (script include)
+		this.chance = new Chance();
+		
+	},
+	
+	process : function(type, id) {
+		if (type == "bundle")
+			this.processBundle(id);
+		else
+			this.processRequest(id);
+	},
+	
+	processBundle : function(bundleID) {
+		var bundleReq = new GlideRecord(this.BUNDLE_REQUEST);
+		bundleReq.addQuery("u_bundle", bundleID);
+		bundleReq.orderBy("u_order");
+		bundleReq.query();
+		while (bundleReq.next()) {
+			this.processRequest(bundleReq.getValue("u_request"));
+		}
+		
+	},
+	
+	processRequest : function(requestID) {
+		// progress worker updates
+		worker.addMessage("Processing map");
+		
+		var request = new GlideRecord(this.REQUEST);
+		request.get(requestID);
+		
+		if (!request.isValidRecord()) {
+			worker.setProgressStateCode("error");
+			worker.addMessage("Error: Invalid request record");
+			request.u_status = "Error";
+			request.update();
+			return;
+		}
+		
+		// get request parameters
+		var recordCount = request.u_record_count;
+		var map = request.u_map;
+		var runRules = request.u_map.u_run_business_rules;
+		var table = request.u_map.u_table;
+		var fields = this._getFields(map);
+		
+		if (!fields.hasNext()) {
+			// TODO log error
+			worker.setProgressStateCode("error");
+			worker.addMessage("Error: No map fields found");
+			request.u_status = "Error";
+			request.update();
+			return;
+		}
+		
+		worker.addMessage("Generating records");
+		
+		this._generateRecords(request);
+		
+		request.setValue("u_status", "Complete");
+		request.update();
+		worker.addMessage("All done for now, please come back for more randomness");
+		
+	},
+	
+	/*
+ 	* fetch reference and choice values so we don't have to do it for each
+ 	* record
+ 	*/
+	_getFields : function(map) {
+		var fields = new GlideRecord(this.MAP);
+		fields.addQuery("u_active", true);
+		fields.addQuery("u_map", map);
+		fields.orderBy("u_order");
+		fields.query();
+		this.fieldLookups = {};
+		
+		while (fields.next()) {
+			if (fields.u_type == "Choice") {
+				var table = fields.getValue("u_map_table");
+				var field = fields.getValue("u_field");
+				var choices = this._getChoiceFieldValues(table, field);
+				this._addLookupData(field, choices);
+			}
+			
+			if (fields.u_type == "Reference") {
+				var field = fields.getValue("u_field");
+				var table = fields.getValue("u_source_table");
+				var query = fields.getValue("u_source_filter");
+				var references = this._getReferenceFieldValues(table, query);
+				this._addLookupData(field, references);
+			}
+		}
+		
+		// reset location
+		fields.setLocation(-1);
+		
+		return fields;
+	},
+	
+	/*
+ 	* cache reference and choice values
+ 	*/
+	_addLookupData : function(field, values) {
+		this.fieldLookups[field] = values;
+	},
+	
+	/*
+ 	* get reference field values
+ 	*/
+	_getReferenceFieldValues : function(table, query) {
+		var gr = new GlideRecord(table);
+		gr.addEncodedQuery(query);
+		gr.query();
+		this._logMessage("Getting reference lookups on " + table + " where "
+		+ query + ", returned " + gr.getRowCount() + " rows");
+		var values = [];
+		while (gr.next()) {
+			values.push(gr.getUniqueValue());
+		}
+		return values;
+	},
+	
+	/*
+ 	* get choice field values
+ 	*/
+	_getChoiceFieldValues : function(table, field) {
+		
+		// TODO migrate to GlideChoiceListGenerator ? supports dependent values
+		// or handle this in a script
+		var choiceList = GlideChoiceList.getChoiceList(table, field);
+		var choices = [];
+		for (var i = 0; i < choiceList.getSize(); i++)
+			choices.push(choiceList.getChoice(i).getValue());
+		
+		this._logMessage("Getting choice lookups on " + table + ":" + field
+		+ ", returned " + choices);
+		
+		return choices;
+	},
+	
+	_generateRecords : function(request) {
+		var recordCount = request.u_record_count;
+		var map = request.u_map;
+		var runRules = request.u_map.u_run_business_rules;
+		var table = request.u_map.u_table;
+		var fields = this._getFields(map);
+		var autoSysFields = request.u_map.u_sys_fields;
+		
+		var createdCount = 0;
+		for (var i = 1; i <= recordCount; i++) {
+			var newRecord = new GlideRecord(table);
+			newRecord.setWorkflow(runRules);
+			
+			fields.setLocation(-1);
+			while (fields.next()) {
+				var field = fields.u_field;
+				var type = fields.u_type;
+				var options = fields.u_options;
+				this._setRandomValue(fields, newRecord);
+			}
+			newRecord.autoSysFields(autoSysFields);
+			newRecord.insertLazy();
+			createdCount++;
+			
+			this._logProgress(newRecord.sys_meta.plural, createdCount);
+			
+			// TODO handle incomplete runs
+			// TODO capture run time and save in request for future reference
+			// TODO add last run time to request
+			// TODO action to re-run, creates a new pending request and
+			// processes
+			
+		}
+		
+		worker.addMessage("Generated " + createdCount.toString() + " "
+		+ newRecord.sys_meta.plural);
+		
+	},
+	
+	/*
+ 	* convert option string into object for Chance
+ 	*/
+	_setupOptions : function(optionString) {
+		if (!optionString)
+			return "";
+		
+		var optionArray = optionString.split(",");
+		var options = {};
+		
+		for (var i = 0; i < optionArray.length; i++) {
+			var name = optionArray[i].split(":")[0];
+			var value = optionArray[i].split(":")[1];
+			options[name] = value;
+		}
+		return options;
+	},
+	
+	/*
+ 	* Random value handler
+ 	*/
+	_setRandomValue : function(fieldMap, newRecord) {
+		
+		var field = fieldMap.getValue("u_field");
+		var runScript = fieldMap.u_script_generated;
+		var script = fieldMap.u_script;
+		
+		if (runScript) {
+			try {
+				this._setValueFromScript(field, newRecord, script);
+			} catch (err) {
+				this._logMessage("Error in script evaluation for field '"
+				+ field + "' - " + err);
+			} finally {
+				return;
+			}
+		}
+		
+		var type = fieldMap.getValue("u_type");
+		var options = this._setupOptions(fieldMap.getValue("u_options"));
+		
+		try {
+			switch (type.toString()) {
+				case "String":
+				var stringDataType = fieldMap.u_string_data;
+				if (stringDataType == "Word")
+					var value = this.chance.word(options);
+				
+				if (stringDataType == "Sentence")
+					var value = this.chance.sentence(options);
+				
+				if (stringDataType == "Paragraph")
+					var value = this.chance.paragraph(options);
+				
+				if (stringDataType == "Email")
+					var value = this.chance.email(options);
+				
+				if (stringDataType == "First name")
+					var value = this.chance.first(options);
+				
+				if (stringDataType == "Last name")
+					var value = this.chance.last(options);
+				
+				if (stringDataType == "Full name")
+					var value = this.chance.name(options);
+				
+				if (stringDataType == "IP address")
+					var value = this.chance.ip(options);
+				
+				if (stringDataType == "Phone")
+					var value = this.chance.phone(options);
+				
+				if (stringDataType == "Latitude")
+					var value = this.chance.latitude(options);
+				
+				if (stringDataType == "Longitude")
+					var value = this.chance.longitude(options);
+				
+				if (stringDataType == "String")
+					var value = this.chance.string(options);
+				
+				if (stringDataType == "Pick one of") {
+					var picksString = fieldMap.u_picks;
+					var picks = picksString.split(",");
+					var value = this.chance.pick(picks).trim();
+				}
+				
+				break;
+				case "Number":
+				var value = this.chance.integer(options);
+				break;
+				case "DateTime":
+				var begin;
+				var end;
+				if (!fieldMap.u_date_begin.nil())
+					begin = new GlideDateTime(fieldMap.u_date_begin);
+				
+				if (!fieldMap.u_date_end.nil()) 
+					end = new GlideDateTime(fieldMap.u_date_end);
+				
+				if (!fieldMap.u_date_begin_field.nil()) {
+					if (newRecord.getValue(fieldMap.u_date_begin_field) != "")
+						begin = new GlideDateTime(newRecord
+					.getValue(fieldMap.u_date_begin_field));
+				}
+				
+				if (!fieldMap.u_date_end_field.nil()) {
+					if (newRecord.getValue(fieldMap.u_date_end_field) != "")
+						end = new GlideDateTime(newRecord
+					.getValue(fieldMap.u_date_end_field));
+				}
+				var value = DataGeneratorUtils.generateRandomDate(begin, end);
+				
+				break;
+				case "Date":
+				
+				break;
+				case "Name":
+				break;
+				case "Boolean":
+				var value = this.chance.bool(options);
+				break;
+				case "Reference":
+				var references = this.fieldLookups[field];
+				var value = "";
+				if (references.length > 0)
+					
+				var value = this.chance.pick(references, 1);
+				break;
+				case "Choice":
+				var choices = this.fieldLookups[field];
+				var value = this.chance.pick(choices, 1);
+				break;
+				default:
+				break;
+			}
+			newRecord.setValue(field, value.toString());
+			
+		} catch (err) {
+			this._logMessage("Error in random generation for field " + field
+			+ ": " + err);
+		}
+		
+	},
+	
+	_logMessage : function(message) {
+		gs.log(message, this.type);
+	},
+	
+	_logProgress : function(items, count) {
+		if (count == 0)
+			return;
+		
+		// every 10 to 100, every 100 after that
+		var i = count;
+		if ((i < 100 && i % 10 == 0) || (i % 100 == 0)) {
+			this._logMessage("Loaded " + count + " " + items);
+			worker.addMessage("Created " + count + " " + items);
+		}
+	},
+	
+	/*
+ 	* generate a value from script setup 'target' script variable to access
+ 	* previously set values setup 'chance' for Chance API access
+ 	*/
+	_setValueFromScript : function(field, newRecord, script) {
+		var gc = GlideController;
+		gc.putGlobal("target", newRecord);
+		gc.putGlobal("chance", this.chance);
+		gc.putGlobal("answer", null);
+		
+		// process the script, error handling in caller
+		gc.evaluateString(script);
+		if (!gc.exists("answer")) {
+			this._logMessage("Script for field " + field
+			+ " did not set a value for variable 'answer'");
+			return;
+		}
+		
+		answer = gc.getGlobal("answer");
+		newRecord.setValue(field, answer);
+	},
+	
+	type : 'DataGeneratorWorker'
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>john.roberts</sys_created_by>
+        <sys_created_on>2014-02-21 02:09:10</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>68b11fc1ef031100719bb4d2b7c0fbe4</sys_id>
+        <sys_mod_count>44</sys_mod_count>
+        <sys_name>DataGeneratorWorker</sys_name>
+        <sys_package display_value="Data Generator" source="ed470381ef031100719bb4d2b7c0fb34">ed470381ef031100719bb4d2b7c0fb34</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Data Generator">ed470381ef031100719bb4d2b7c0fb34</sys_scope>
+        <sys_update_name>sys_script_include_68b11fc1ef031100719bb4d2b7c0fbe4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2014-04-21 15:20:21</sys_updated_on>
+    </sys_script_include>
+</record_update>

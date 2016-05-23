@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_list parent="u_dg_bundle" relationship="" sys_domain="global" table="u_dg_m2m_bundle_request" version="2" view="">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>u_order</element>
+            <list_id display_value="u_dg_m2m_bundle_request" element="NULL" name="u_dg_m2m_bundle_request" parent="u_dg_bundle" relationship="NULL" sys_domain="global" view="Default view">49414969ef231100719bb4d2b7c0fb8f</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-19 01:11:34</sys_created_on>
+            <sys_id>01414969ef231100719bb4d2b7c0fb90</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-03-19 01:11:34</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>u_request</element>
+            <list_id display_value="u_dg_m2m_bundle_request" element="NULL" name="u_dg_m2m_bundle_request" parent="u_dg_bundle" relationship="NULL" sys_domain="global" view="Default view">49414969ef231100719bb4d2b7c0fb8f</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-19 01:11:34</sys_created_on>
+            <sys_id>41414969ef231100719bb4d2b7c0fb90</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-03-19 01:11:34</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>u_dg_m2m_bundle_request</name>
+            <parent>u_dg_bundle</parent>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-19 01:11:34</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>49414969ef231100719bb4d2b7c0fb8f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>u_dg_m2m_bundle_request</sys_name>
+            <sys_package display_value="Data Generator" source="ed470381ef031100719bb4d2b7c0fb34">ed470381ef031100719bb4d2b7c0fb34</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Data Generator">ed470381ef031100719bb4d2b7c0fb34</sys_scope>
+            <sys_update_name>sys_ui_list_u_dg_m2m_bundle_request_u_dg_bundle_null</sys_update_name>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-03-19 01:11:34</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

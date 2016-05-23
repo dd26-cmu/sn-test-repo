@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Field Map" max_length="40" name="u_dg_field_map" type="collection">
+        <element default="true" label="Active" max_length="40" name="u_active" type="boolean"/>
+        <element label="Date begin" max_length="40" name="u_date_begin" type="glide_date_time"/>
+        <element attributes="types=glide_date;glide_date_time,allow_null=true" dependent="u_map_table" dependent_on_field="u_map_table" label="Date begin field" max_length="40" name="u_date_begin_field" type="field_name" use_dependent_field="true"/>
+        <element label="Date end" max_length="40" name="u_date_end" type="glide_date_time"/>
+        <element attributes="types=glide_date;glide_date_time,allow_null=true" dependent="u_map_table" dependent_on_field="u_map_table" label="Date end field" max_length="40" name="u_date_end_field" type="field_name" use_dependent_field="true"/>
+        <element attributes="allow_null=true" dependent="u_map_table" dependent_on_field="u_map_table" label="Field" mandatory="true" max_length="40" name="u_field" type="field_name" use_dependent_field="true"/>
+        <element attributes="readonly_clickthrough=true" label="Map" max_length="32" name="u_map" read_only="true" reference="u_dg_map" reference_cascade_rule="delete" type="reference"/>
+        <element attributes="base_start=true" default="javascript:parent.u_table;" label="Map table" max_length="40" name="u_map_table" read_only="true" type="table_name"/>
+        <element label="Options" max_length="100" name="u_options" type="string"/>
+        <element default="javascript:DataGeneratorUtils.getNextOrder(parent.getUniqueValue());" hint="The order field values are calculated. You can access previously set values in script as 'target.field_name'." label="Order" max_length="40" name="u_order" type="integer"/>
+        <element hint="Provide a comma separated list of picks, we will randomly pick one" label="Picks" max_length="100" name="u_picks" type="string"/>
+        <element hint="set the variable 'answer' to the value to set in the field" label="Script" max_length="4000" name="u_script" type="script"/>
+        <element hint="Enabling scripts overrides other data types" label="Script generated" max_length="40" name="u_script_generated" type="boolean"/>
+        <element attributes="show_condition_count=true" dependent="u_source_table" dependent_on_field="u_source_table" label="Source filter" max_length="4000" name="u_source_filter" type="conditions" use_dependent_field="true"/>
+        <element attributes="base_start=true" label="Source table" max_length="40" name="u_source_table" read_only="true" type="table_name"/>
+        <element choice="1" label="String data" max_length="40" name="u_string_data" type="string">
+            <choice>
+                <element hint="Random word using Chance API. Valid options &quot;syllables:#&quot;, &quot;length:#&quot;." label="Word" sequence="0" value="Word"/>
+                <element hint="Random sentence using Chance API. Valid option &quot;words:#&quot;." label="Sentence" sequence="1" value="Sentence"/>
+                <element hint="Random paragraph using Chance API. Valid option &quot;sentences:#&quot;." label="Paragraph" sequence="2" value="Paragraph"/>
+                <element hint="Random email using Chance API. Valid option &quot;domain&quot;." label="Email" sequence="3" value="Email"/>
+                <element hint="Random first name using Chance API" label="First name" sequence="4" value="First name"/>
+                <element hint="Random last name using Chance API" label="Last name" sequence="5" value="Last name"/>
+                <element hint="Random full name using Chance API. Valid options &quot;middle:true&quot;, &quot;middle_initial:true&quot;, &quot;prefix:true&quot;." label="Full name" sequence="6" value="Full name"/>
+                <element hint="Random IPv4 address using Chance API" label="IP address" sequence="7" value="IP address"/>
+                <element hint="Random 10 digit phone number using Chance API. Valid options &quot;formatted:false&quot;." label="Phone" sequence="8" value="Phone"/>
+                <element hint="Random latitude using Chance API. Valid options &quot;min:#&quot;, &quot;max:#&quot;." label="Latitude" sequence="9" value="Latitude"/>
+                <element hint="Random longitude using Chance API. Valid options &quot;min:#&quot;, &quot;max:#&quot;." label="Longitude" sequence="10" value="Longitude"/>
+                <element hint="Random integer string using Chance API. Valid options &quot;min:#&quot;, &quot;max:#&quot;." label="Integer string" sequence="11" value="Integer string"/>
+                <element hint="Random string using Chance API. Valid options &quot;length:#&quot;, &quot;pool:characterset&quot;." label="String" sequence="12" value="String"/>
+                <element hint="Random selection from a list of values specified in the 'Picks' field" label="Pick one of..." sequence="13" value="Pick one of"/>
+            </choice>
+        </element>
+        <element choice="1" label="Field Type" max_length="40" name="u_type" read_only="true" type="choice">
+            <choice>
+                <element label="Number" sequence="0" value="Number"/>
+                <element label="Choice" sequence="1" value="Choice"/>
+                <element label="Boolean" sequence="2" value="Boolean"/>
+                <element label="Date" sequence="3" value="Date"/>
+                <element label="DateTime" sequence="4" value="DateTime"/>
+                <element label="Reference" sequence="5" value="Reference"/>
+                <element label="String" sequence="6" value="String"/>
+                <element label="Other" sequence="7" value="Other"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="u_map"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access/>
+        <active>true</active>
+        <api_name>global.DataGeneratorUtils</api_name>
+        <client_callable>false</client_callable>
+        <description>Component of Data Generator application</description>
+        <name>DataGeneratorUtils</name>
+        <script><![CDATA[var DataGeneratorUtils = Class.create();
+
+DataGeneratorUtils.getNextOrder = function(mapId) {
+	var gr = new GlideRecord("u_dg_field_map");
+	gr.addQuery("u_map", mapId);
+	gr.setLimit(1);
+	gr.orderByDesc("u_order");
+	gr.query();
+	if (gr.next())
+		return parseInt(gr.getValue("u_order")) + 10;
+	else
+		return 100;
+}
+
+/**
+ * Generate a random 
+ If start and end are not specified you'll
+ * get a random date within the past year needs to be used with
+ * gr.autoSysFields(false); if you are trying to set dates in system
+ * timestamp fields
+ * 
+ * @param [start]
+ *            GlideDateTime - optionally defines the start of the window
+ * @param [end]
+ *            GlideDateTime - optionally defines the end of the window
+ * @return GlideDateTime
+ */
+DataGeneratorUtils.generateRandomDate = function(/* [GlideDateTime] */start, /* [GlideDateTime] */
+end) {
+	var temp = new GlideDateTime();
+	
+	//default start to a year ago if we don't have one
+	if (!start instanceof GlideDateTime) 
+		temp.addYears(-1);
+	else
+		temp.setValue(start.getValue());
+	
+	//default end to now if we don't have one
+	if (!end instanceof GlideDateTime)
+		end = new GlideDateTime();
+	
+	if (temp.getValue() == end.getValue())
+		return temp;
+
+	var totalDays = Math.floor(gs.dateDiff(temp, end, true) / (60 * 60 * 24));
+	var rndSecs = Math.floor(Math.random() * (60 * 60 * 24)); 
+	temp.addSeconds(rndSecs);
+
+	var rndDays = Math.floor(Math.random() * totalDays) + 1;
+	temp.addDays(rndDays);
+	return temp;
+}
+
+DataGeneratorUtils.duplicateMap = function (sourceMapId) {
+	var map = new GlideRecord("u_dg_map");
+	if (!map.get(sourceMapId))
+		return;
+	
+	map.u_name = map.u_name + " (copy)";
+	var newMapId = map.insert();
+	
+	var mapFields = new GlideRecord("u_dg_field_map");
+	mapFields.addQuery("u_map", sourceMapId);
+	mapFields.query();
+	while (mapFields.next()) {
+		mapFields.u_map = newMapId;
+		mapFields.insert();
+	}
+	return newMapId;
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>john.roberts</sys_created_by>
+        <sys_created_on>2014-03-21 15:36:45</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>f0c95e56ef231100719bb4d2b7c0fbda</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>DataGeneratorUtils</sys_name>
+        <sys_package display_value="Data Generator" source="ed470381ef031100719bb4d2b7c0fb34">ed470381ef031100719bb4d2b7c0fb34</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Data Generator">ed470381ef031100719bb4d2b7c0fb34</sys_scope>
+        <sys_update_name>sys_script_include_f0c95e56ef231100719bb4d2b7c0fbda</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2014-04-21 15:17:09</sys_updated_on>
+    </sys_script_include>
+</record_update>

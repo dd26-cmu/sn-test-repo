@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Bundle Request" max_length="40" name="u_dg_m2m_bundle_request" type="collection">
+        <element label="Bundle" max_length="32" name="u_bundle" reference="u_dg_bundle" reference_cascade_rule="delete" type="reference"/>
+        <element default="100" label="Order" max_length="40" name="u_order" type="integer"/>
+        <element display="true" label="Request" max_length="32" name="u_request" reference="u_dg_request" reference_cascade_rule="delete" type="reference"/>
+        <index name="index">
+            <element name="u_request"/>
+        </index>
+        <index name="index2">
+            <element name="u_bundle"/>
+        </index>
+    </element>
+</database>

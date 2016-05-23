@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access/>
+        <active>true</active>
+        <api_name>global.GenerateDataWorker</api_name>
+        <client_callable>false</client_callable>
+        <description>        var worker = new GlideScriptedProgressWorker();&#13;
+        worker.setProgressName("GenerateDataWorker");&#13;
+        worker.setName("GenerateDataWorker");&#13;
+        worker.addParameter("hello");&#13;
+        worker.setBackground(true);&#13;
+        worker.start();&#13;
+        gs.print(worker.getProgressID());&#13;
+</description>
+        <name>GenerateDataWorker</name>
+        <script><![CDATA[var GenerateDataWorker = Class.create();
+
+GenerateDataWorker.prototype = {
+	initialize : function() {
+		this.outputSummary = "";
+	},
+	
+	process: function(input1, input2) {
+		gs.print("Running: " + input1 + "," + input2);
+		worker.addMessage("Running Msg " + input1 + "," + input2);
+		worker.setProgressState("running");
+		gs.sleep(10000);
+		worker.addMessage("Testing complete");
+		worker.setProgressState("complete");
+		gs.print("Testing complete");
+		
+		worker.setOutputSummary("this is an output message");
+	}
+	
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>john.roberts</sys_created_by>
+        <sys_created_on>2014-03-09 00:25:57</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>1be69912ef131100719bb4d2b7c0fb73</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>GenerateDataWorker</sys_name>
+        <sys_package display_value="Data Generator" source="ed470381ef031100719bb4d2b7c0fb34">ed470381ef031100719bb4d2b7c0fb34</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Data Generator">ed470381ef031100719bb4d2b7c0fb34</sys_scope>
+        <sys_update_name>sys_script_include_1be69912ef131100719bb4d2b7c0fb73</sys_update_name>
+        <sys_updated_by>john.roberts</sys_updated_by>
+        <sys_updated_on>2014-03-09 02:38:16</sys_updated_on>
+    </sys_script_include>
+</record_update>

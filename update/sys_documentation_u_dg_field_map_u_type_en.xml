@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="u_type" label="Field Type" language="en" table="u_dg_field_map">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>u_type</element>
+            <help/>
+            <hint/>
+            <label>Field Type</label>
+            <language>en</language>
+            <name>u_dg_field_map</name>
+            <plural>Field Type</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-02-21 01:15:25</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>660e7590ef102100ab54b4d2b7c0fbc9</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>Field Type</sys_name>
+            <sys_package display_value="Data Generator" source="ed470381ef031100719bb4d2b7c0fb34">ed470381ef031100719bb4d2b7c0fb34</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Data Generator">ed470381ef031100719bb4d2b7c0fb34</sys_scope>
+            <sys_update_name>sys_documentation_u_dg_field_map_u_type_en</sys_update_name>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-03-10 02:13:55</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

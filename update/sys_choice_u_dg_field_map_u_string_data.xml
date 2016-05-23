@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="u_string_data" table="u_dg_field_map" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_string_data</element>
+            <hint>Random word using Chance API. Valid options "syllables:#", "length:#".</hint>
+            <inactive>false</inactive>
+            <label>Word</label>
+            <language>en</language>
+            <name>u_dg_field_map</name>
+            <sequence>0</sequence>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-10 02:28:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>4e9cba6aef131100719bb4d2b7c0fb0f</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-04-16 00:04:06</sys_updated_on>
+            <value>Word</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_string_data</element>
+            <hint>Random sentence using Chance API. Valid option "words:#".</hint>
+            <inactive>false</inactive>
+            <label>Sentence</label>
+            <language>en</language>
+            <name>u_dg_field_map</name>
+            <sequence>1</sequence>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-10 02:28:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>829cba6aef131100719bb4d2b7c0fb10</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-04-16 00:03:09</sys_updated_on>
+            <value>Sentence</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_string_data</element>
+            <hint>Random paragraph using Chance API. Valid option "sentences:#".</hint>
+            <inactive>false</inactive>
+            <label>Paragraph</label>
+            <language>en</language>
+            <name>u_dg_field_map</name>
+            <sequence>2</sequence>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-10 02:28:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>469cba6aef131100719bb4d2b7c0fb10</sys_id>
+            <sys_mod_count>4</sys_mod_count>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-04-16 00:02:37</sys_updated_on>
+            <value>Paragraph</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_string_data</element>
+            <hint>Random email using Chance API. Valid option "domain".</hint>
+            <inactive>false</inactive>
+            <label>Email</label>
+            <language>en</language>
+            <name>u_dg_field_map</name>
+            <sequence>3</sequence>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-10 02:28:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>0a9cba6aef131100719bb4d2b7c0fb10</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-04-16 00:00:51</sys_updated_on>
+            <value>Email</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_string_data</element>
+            <hint>Random first name using Chance API</hint>
+            <inactive>false</inactive>
+            <label>First name</label>
+            <language>en</language>
+            <name>u_dg_field_map</name>
+            <sequence>4</sequence>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-10 02:28:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>ca9cba6aef131100719bb4d2b7c0fb10</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-04-15 23:44:42</sys_updated_on>
+            <value>First name</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_string_data</element>
+            <hint>Random last name using Chance API</hint>
+            <inactive>false</inactive>
+            <label>Last name</label>
+            <language>en</language>
+            <name>u_dg_field_map</name>
+            <sequence>5</sequence>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-10 02:28:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>8e9cba6aef131100719bb4d2b7c0fb10</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-04-15 23:44:48</sys_updated_on>
+            <value>Last name</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_string_data</element>
+            <hint>Random full name using Chance API. Valid options "middle:true", "middle_initial:true", "prefix:true".</hint>
+            <inactive>false</inactive>
+            <label>Full name</label>
+            <language>en</language>
+            <name>u_dg_field_map</name>
+            <sequence>6</sequence>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-10 02:28:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>429cba6aef131100719bb4d2b7c0fb11</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-04-15 23:59:07</sys_updated_on>
+            <value>Full name</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_string_data</element>
+            <hint>Random IPv4 address using Chance API</hint>
+            <inactive>false</inactive>
+            <label>IP address</label>
+            <language>en</language>
+            <name>u_dg_field_map</name>
+            <sequence>7</sequence>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-10 02:28:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>069cba6aef131100719bb4d2b7c0fb11</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-04-15 23:45:02</sys_updated_on>
+            <value>IP address</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_string_data</element>
+            <hint>Random 10 digit phone number using Chance API. Valid options "formatted:false".</hint>
+            <inactive>false</inactive>
+            <label>Phone</label>
+            <language>en</language>
+            <name>u_dg_field_map</name>
+            <sequence>8</sequence>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-10 02:28:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c69cba6aef131100719bb4d2b7c0fb11</sys_id>
+            <sys_mod_count>4</sys_mod_count>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-04-16 00:11:53</sys_updated_on>
+            <value>Phone</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_string_data</element>
+            <hint>Random latitude using Chance API. Valid options "min:#", "max:#".</hint>
+            <inactive>false</inactive>
+            <label>Latitude</label>
+            <language>en</language>
+            <name>u_dg_field_map</name>
+            <sequence>9</sequence>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-10 02:28:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>8a9cba6aef131100719bb4d2b7c0fb11</sys_id>
+            <sys_mod_count>6</sys_mod_count>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-04-15 23:56:14</sys_updated_on>
+            <value>Latitude</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_string_data</element>
+            <hint>Random longitude using Chance API. Valid options "min:#", "max:#".</hint>
+            <inactive>false</inactive>
+            <label>Longitude</label>
+            <language>en</language>
+            <name>u_dg_field_map</name>
+            <sequence>10</sequence>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-10 02:36:30</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>ed6e3e6aef131100719bb4d2b7c0fb55</sys_id>
+            <sys_mod_count>5</sys_mod_count>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-04-15 23:56:05</sys_updated_on>
+            <value>Longitude</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_string_data</element>
+            <hint>Random integer string using Chance API. Valid options "min:#", "max:#".</hint>
+            <inactive>false</inactive>
+            <label>Integer string</label>
+            <language>en</language>
+            <name>u_dg_field_map</name>
+            <sequence>11</sequence>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-15 03:29:42</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>518a30d0ef631100719bb4d2b7c0fb09</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-04-16 00:04:52</sys_updated_on>
+            <value>Integer string</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_string_data</element>
+            <hint>Random string using Chance API. Valid options "length:#", "pool:characterset".</hint>
+            <inactive>false</inactive>
+            <label>String</label>
+            <language>en</language>
+            <name>u_dg_field_map</name>
+            <sequence>12</sequence>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-04-15 23:42:51</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>6e79f466ef002100719bb4d2b7c0fb02</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-04-16 00:06:10</sys_updated_on>
+            <value>String</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_string_data</element>
+            <hint>Random selection from a list of values specified in the 'Picks' field</hint>
+            <inactive>false</inactive>
+            <label>Pick one of...</label>
+            <language>en</language>
+            <name>u_dg_field_map</name>
+            <sequence>13</sequence>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-11 19:40:53</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>34723f03ef131100719bb4d2b7c0fb8c</sys_id>
+            <sys_mod_count>6</sys_mod_count>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-04-16 00:04:26</sys_updated_on>
+            <value>Pick one of</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>u_string_data</element>
+            <name>u_dg_field_map</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-05-09 20:01:25</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>771f08294f9b1200d811f5a18110c773</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>u_string_data</sys_name>
+            <sys_package display_value="Data Generator" source="ed470381ef031100719bb4d2b7c0fb34">ed470381ef031100719bb4d2b7c0fb34</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Data Generator">ed470381ef031100719bb4d2b7c0fb34</sys_scope>
+            <sys_update_name>sys_choice_u_dg_field_map_u_string_data</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-05-09 20:01:25</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

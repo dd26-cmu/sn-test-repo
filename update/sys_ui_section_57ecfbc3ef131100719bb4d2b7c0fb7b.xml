@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_section caption="" section_id="57ecfbc3ef131100719bb4d2b7c0fb7b" sys_domain="global" table="u_dg_bundle" version="3" view="">
+        <sys_ui_annotation action="INSERT_OR_UPDATE">
+            <is_plain_text>false</is_plain_text>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-25 19:54:02</sys_created_on>
+            <sys_id>f1bbb767ef231100719bb4d2b7c0fb42</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-03-25 19:54:02</sys_updated_on>
+            <text>Add existing generator requests to the related list to provision multiple record types in a single batch. Request processing order is controlled by the order field.</text>
+            <type display_value="Section Details">19756e5ec3313000bac1addbdfba8f18</type>
+        </sys_ui_annotation>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>f1bbb767ef231100719bb4d2b7c0fb42</element>
+            <position>0</position>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-25 19:54:02</sys_created_on>
+            <sys_id>35bbb767ef231100719bb4d2b7c0fb42</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="u_dg_bundle" sys_domain="global" view="Default view">57ecfbc3ef131100719bb4d2b7c0fb7b</sys_ui_section>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-03-25 19:54:02</sys_updated_on>
+            <sys_user/>
+            <type>annotation</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_name</element>
+            <position>1</position>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-25 19:54:02</sys_created_on>
+            <sys_id>75bbb767ef231100719bb4d2b7c0fb42</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="u_dg_bundle" sys_domain="global" view="Default view">57ecfbc3ef131100719bb4d2b7c0fb7b</sys_ui_section>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-03-25 19:54:02</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_description</element>
+            <position>2</position>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-25 19:54:02</sys_created_on>
+            <sys_id>b5bbb767ef231100719bb4d2b7c0fb42</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="u_dg_bundle" sys_domain="global" view="Default view">57ecfbc3ef131100719bb4d2b7c0fb7b</sys_ui_section>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-03-25 19:54:02</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>u_dg_bundle</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>john.roberts</sys_created_by>
+            <sys_created_on>2014-03-11 20:26:40</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>57ecfbc3ef131100719bb4d2b7c0fb7b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>u_dg_bundle</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Data Generator" source="ed470381ef031100719bb4d2b7c0fb34">ed470381ef031100719bb4d2b7c0fb34</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Data Generator">ed470381ef031100719bb4d2b7c0fb34</sys_scope>
+            <sys_update_name>sys_ui_section_57ecfbc3ef131100719bb4d2b7c0fb7b</sys_update_name>
+            <sys_updated_by>john.roberts</sys_updated_by>
+            <sys_updated_on>2014-03-11 20:26:40</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>
